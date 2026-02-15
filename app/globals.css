@@ -1,43 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --primary: #8b5cf6;
-  --secondary: #ec4899;
-  --accent: #06b6d4;
-  --card-bg: #1e293b;
-  --border: #334155;
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 15, 23, 42;
+  /* slate-950 */
+  --background-end-rgb: 2, 6, 23;
+  /* slate-950 darker */
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom right,
+        rgb(var(--background-start-rgb)),
+        rgb(var(--background-end-rgb)));
+    min-height: 100vh;
+  }
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-  font-family: var(--font-sans);
-  background-color: var(--background);
-  color: var(--foreground);
-  overflow-x: hidden;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle at top right, #1e1b4b, var(--background));
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-button {
-  font-family: inherit;
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }
